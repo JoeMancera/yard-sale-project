@@ -13,7 +13,7 @@ const Header = () => {
 
         <ul>
           <li>
-            <a href="/">All</a>
+            <a href="/">All-</a>
           </li>
           <li>
             <a href="/">Clothes</a>
