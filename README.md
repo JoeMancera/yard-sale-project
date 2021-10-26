@@ -2,6 +2,8 @@
 
 > Proyecto resultado del curso de react práctico de platzi. Se usa react.js, webpack y otros componetes para su construcción.
 
+Enlase a la docuemntación de la [API](https://api.escuelajs.co/docs/) utilizada
+
 ## 🪄 Tecnologies
 
 - ![HTML5](https://img.shields.io/badge/-HTML5-E34F26?style=plastic&logo=html5&logoColor=white)
