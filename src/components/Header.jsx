@@ -2,12 +2,14 @@ import React, { useState, useContext } from "react";
 import AppContext from "@context/AppContext";
 import "@styles/Header.scss";
 import Menu from "@components/Menu";
+import MyOrder from "@containers/MyOrder";
 import menuIcon from "@icons/icon_menu.svg";
 import logoYardSale from'@logos/logo_yard_sale.svg'
 import shoppingCarIcon from '@icons/icon_shopping_cart.svg';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isOrdersOpen, setIsOrdersOpen] = useState(false);
   const { state } = useContext(AppContext);
 
   const handleToggleMenu = () => {
@@ -48,13 +50,17 @@ const Header = () => {
           <li className="navbar-email" onClick={handleToggleMenu}>
             platzi@example.com
           </li>
-          <li className="navbar-shopping-cart">
+          <li 
+            className="navbar-shopping-cart" 
+            onClick={() => setIsOrdersOpen(!isOrdersOpen)}
+          >
             <img src={shoppingCarIcon} alt="shopping cart" />
             {state.cart.length > 0 ? <div>{state.cart.length}</div> : null }
           </li>
         </ul>
       </div>
       {isMenuOpen && <Menu />}
+      {isOrdersOpen && <MyOrder />}
     </nav>
   );
 };
