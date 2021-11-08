@@ -1,14 +1,18 @@
 import React, { useContext } from 'react';
-import '@styles/ProductItem.scss';
 import AppContext from '@context/AppContext';
 import addToCartIcon from '@icons/bt_add_to_cart.svg';
 import addedToCardIcon from '@icons/bt_added_to_cart.svg';
+import '@styles/ProductItem.scss';
 
 const ProductItem = ({ product }) => {
-	const { addToCart } = useContext(AppContext);
+	const { addToCart, removeFromCart, isOnCart } = useContext(AppContext);
 
-	const addToCartHandler = (productAdded) => {
-		addToCart(productAdded);
+	const toggleCartHandler = (productAdded) => {
+		if(isOnCart(productAdded)) {
+			removeFromCart(productAdded);
+		} else {
+			addToCart(productAdded);
+		}
 	}
 
 	return (
@@ -19,8 +23,8 @@ const ProductItem = ({ product }) => {
 					<p>${product.price}</p>
 					<p>{product.title}</p>
 				</div>
-				<figure onClick={() => addToCartHandler(product) } >
-					<img src={addToCartIcon} alt="" />
+				<figure onClick={() => toggleCartHandler(product) } >
+					<img src={isOnCart(product) ? addedToCardIcon : addToCartIcon} alt="" />
 				</figure>
 			</div>
 		</div>

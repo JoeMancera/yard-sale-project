@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 
 const initialState = {
   cart: [],
@@ -22,10 +22,15 @@ const useInitialState = () => {
     })
   }
 
+  const isOnCart = (payload) => {
+    return state.cart.find(item => item.id === payload.id)
+  }
+
   return {
     state,
     addToCart,
-    removeFromCart
+    removeFromCart,
+    isOnCart
   };
 }
 
